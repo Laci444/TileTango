@@ -22,7 +22,7 @@ class Board {
 
     public boolean isSolved() {
         Tile currentTile = circle.getFirst();
-        for (int i = 1; i < circle.size() - 1; i++) {
+        for (int i = 1; i < circle.size(); i++) {
             if (!currentTile.isNext(circle.get(i))) {
                 return false;
             }
