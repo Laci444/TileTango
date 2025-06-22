@@ -1,0 +1,90 @@
+/* for debugging purposes
+.pane {
+    -fx-border-color: red;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+}
+*/
+
+
+/* ----- ALAPSTÍLUSOK ----- */
+#root {
+    -fx-background-color: #fdfdfd;
+    -fx-font-family: "Segoe UI", "Helvetica", sans-serif;
+}
+
+/* ----- KÖZÉPSŐ ÉS KÜLSŐ TILE KÖRÖK ----- */
+.tile {
+    -fx-stroke: #ffffff;
+    -fx-stroke-width: 3;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0.1, 0, 2);
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.tile.center-tile {
+    -fx-fill: #F5A623;
+}
+
+.tile.circle-tile {
+    -fx-fill: #4A90E2;
+}
+
+/* Hover effekt */
+.tile:hover {
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+}
+
+/* ----- LÉPÉSSZÁMLÁLÓ ÉS IDŐZÍTŐ ----- */
+.counter {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
+    -fx-padding: 6;
+}
+
+/* ----- CÍMEK ÉS FELIRATOK ----- */
+.title {
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-padding: 0.75em 0 0 0;
+}
+
+.title > #label_tile {
+    -fx-text-fill: #4A90E2;
+}
+
+.title > #label_tango {
+    -fx-text-fill: #F5A623;
+}
+
+/* ----- DEKORATÍV KERET / KONTAINER ----- */
+.panel {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #4A90E2;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.2, 0, 4);
+}
+
+/* ----- GOMB STÍLUS ----- */
+.button {
+    -fx-background-color: #4A90E2;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 24;
+    -fx-cursor: hand;
+    -fx-padding: 8 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 6, 0.1, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #357ABD;
+}
+
+/* ----- ANIMÁLT ELEMEK ALAP ----- */
+.animated {
+    -fx-transition: all 0.3s ease;
+}

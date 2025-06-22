@@ -1,27 +1,48 @@
 package com.unideb.inf.tiletango.backend;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class Game {
-    public static void main(String[] args) {
-        Board b = new Board(6);
-        System.out.println(b.getCircle());
-        Scanner input = new Scanner(System.in);
+    Board board;
+    public Game(int numberOfTiles) {
+        this.board = new Board(numberOfTiles);
+    }
 
-        while (true) {
-            int number = input.nextInt();
-            if (number == -1) {
-                break;
-            }
-            number -= 1;
-            System.out.println("Move: " + b.tryMove(number));
-            System.out.println("isSolved: " + b.isSolved());
-            System.out.println("Circle: " + b.getCircle());
-            System.out.println("Middle: " + b.getMiddle());
-            if (b.isSolved()) {
-                break;
+    public Game(Collection<Tile> circle, Tile middle) {
+        this.board = new Board(circle, middle);
+    }
+
+    public List<Integer> getState() {
+        var circle = new ArrayList<>(board.getCircle());
+        circle.addFirst(this.board.getMiddle());
+        return circle.stream().map(Tile::getValue).toList();
+    }
+
+    public int[] getValidMoves() {
+        int boardSize = board.getCircle().size();
+        return IntStream.range(0, boardSize).filter(board::isValidMove).toArray();
+    }
+
+    public void move(int index) {
+        board.tryMove(index);
+    }
+
+    public void moveValue(int value) {
+        if (board.getMiddle().getValue() == value) {
+            value = -1;
+        }
+        for (int i = 0; i < board.getCircle().size(); i++) {
+            if (board.getCircle().get(i).getValue() == value && board.isValidMove(i)) {
+                board.tryMove(i);
+                return;
             }
         }
-        System.out.println("End of game");
+    }
+
+    public boolean isGameOver() {
+        return board.isSolved();
     }
 }
