@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.TextFlow?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" styleClass="pane" stylesheets="@../styles/game_scene.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <BorderPane styleClass="pane" BorderPane.alignment="CENTER">
+         <left>
+            <Label styleClass="counter" text="Time: 00:00:00" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Label styleClass="counter" text="Step count: 0" BorderPane.alignment="CENTER" />
+         </right>
+      </BorderPane>
+   </bottom>
+   <top>
+      <TextFlow styleClass="title" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <Label fx:id="label_tile" text="Tile" />
+         <Label fx:id="label_tango" text="Tango" />
+      </TextFlow>
+   </top>
+   <center>
+      <Pane fx:id="game_board" styleClass="pane" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
