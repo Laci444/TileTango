@@ -23,6 +23,11 @@ jobs:
 
       - name: Build Maven Site
         run: mvn -B clean verify site
+      
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: target/site
 
   deploy-site:
     name: Deploy site to Github Pages
@@ -33,10 +38,5 @@ jobs:
       id-token: write
 
     steps:
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: target/site
-
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
