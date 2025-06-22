@@ -5,10 +5,9 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Implementation of {@link Tile} interface, representing a unit from the circle
  */
-public class CircleTile implements Tile {
-    final int value;
-    private final int previous;
-    private final int next;
+final class CircleTile implements Tile {
+    private final int value;
+    private final int helperValue;
 
     /**
      * Constructor to create {@link CircleTile} class
@@ -24,9 +23,7 @@ public class CircleTile implements Tile {
             throw new IllegalArgumentException("Value must be less than or equals max value");
         }
 
-        this.previous = value == 1 ? maxValue : value - 1;
-        this.next = value == maxValue ? 1 : value + 1;
-
+        this.helperValue = value == maxValue ? 0 : value;
         this.value = value;
     }
 
@@ -36,19 +33,7 @@ public class CircleTile implements Tile {
     }
 
     @Override
-    public boolean isNext(@NotNull Tile next) {
-        return this.next == next.getValue();
-    }
-
-    @Override
-    public boolean isPrevious(@NotNull Tile previous){
-        return this.previous == previous.getValue();
-    }
-
-    @Override
-    public String toString() {
-        return "Tile{" +
-                "value=" + value +
-                '}';
+    public int compareTo(@NotNull Tile o) {
+        return helperValue - o.getValue();
     }
 }

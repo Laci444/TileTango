@@ -12,7 +12,18 @@ import java.util.ListIterator;
  * {@link Math#floorMod} has been used to achieve this behaviour.
  * @param <T> the type of elements in this list
  */
-public class CircularArrayList<T> extends ArrayList<T> {
+class CircularArrayList<T> extends ArrayList<T> {
+    public CircularArrayList(int initialCapacity) {
+        super(initialCapacity);
+    }
+
+    public CircularArrayList() {
+    }
+
+    public CircularArrayList(@NotNull Collection<? extends T> c) {
+        super(c);
+    }
+
     @Override
     public T set(int index, T element) {
         return super.set(Math.floorMod(index, size()), element);
